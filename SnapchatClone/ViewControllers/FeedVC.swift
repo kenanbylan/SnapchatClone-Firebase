@@ -3,13 +3,13 @@ import Firebase
 import SDWebImage
 
 class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
-
+    
     @IBOutlet var tableViewControllers: UITableView!
     
     let fireStoreDb = Firestore.firestore()
     var snapArray = [Snap]()
     var choosenSnap : Snap?
-    var timeLeft : Int?
+    //var timeLeft : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +32,11 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
             } else {
                 
                 if snapshot?.isEmpty == false && snapshot != nil {
-                    
-                    for document in snapshot!.documents {
-                        
-                        let documentId = document.documentID
+                    self.snapArray.removeAll(keepingCapacity: false)
 
+                    for document in snapshot!.documents {
+                        let documentId = document.documentID
+                        
                         if let username = document.get("snapOwner") as? String {
                             if let imageUrlArray = document.get("imageUrlArray") as? [String] {
                                 if let date = document.get("date") as? Timestamp {
@@ -45,18 +45,16 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
                                         
                                         if difference >= 24 {
                                             self.fireStoreDb.collection("Snaps").document(documentId).delete()
+                                        } else {
+                                            let snap = Snap(username: username, imageUrlArray: imageUrlArray, date: date.dateValue(),timeDifference: 24 - difference)
+                                            self.snapArray.append(snap)
                                         }
-                                        //time left --> Snapvc
-                                        self.timeLeft = 24 - difference
                                         
+                                      
                                     }
-                                    let snap = Snap(username: username, imageUrlArray: imageUrlArray, date: date.dateValue())
-                                    self.snapArray.append(snap)
                                     
                                 }
-                                
                             }
-                            
                         }
                         
                     }
@@ -71,13 +69,13 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
     func getUserInfo(){
         
         fireStoreDb.collection("UserInfo").whereField("email", isEqualTo: Auth.auth().currentUser!.email!).getDocuments { snapshots, error in
-        
+            
             if error != nil {
                 self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
             }
             
             if snapshots?.isEmpty == false && snapshots != nil {
-                self.snapArray.removeAll(keepingCapacity: false)
+                //self.snapArray.removeAll()
                 for document in snapshots!.documents {
                     if let username = document.get("username") as? String {
                         
@@ -102,7 +100,7 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
         let cell =  tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedCell
         
         cell.usernameLabel.text = snapArray[indexPath.row].username
-        cell.feedImageView.sd_setImage(with: URL(string: snapArray[indexPath.row].imageUrlArray[2]))
+        cell.feedImageView.sd_setImage(with: URL(string: snapArray[indexPath.row].imageUrlArray[0]))
         return cell
         
     }
@@ -114,12 +112,14 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
             
             let destinationVC = segue.destination as! SnapVC
             destinationVC.selectedSnap = self.choosenSnap
-            destinationVC.selectedTime = self.timeLeft
+            //destinationVC.selectedTime = self.timeLeft
             
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        print(snapArray.count)
         
         choosenSnap = self.snapArray[indexPath.row]
         performSegue(withIdentifier: "toSnapVC", sender: nil)
@@ -140,5 +140,5 @@ class FeedVC: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
     
     
-
+    
 }

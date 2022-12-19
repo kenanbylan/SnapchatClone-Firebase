@@ -9,10 +9,7 @@ class UserSignleton {
     
     var email = ""
     var username = ""
-    
-    
     private init(){
-        
         
     }
     

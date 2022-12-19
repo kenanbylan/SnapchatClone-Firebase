@@ -33,7 +33,7 @@ class SignInVC: UIViewController {
             
         } else {
             makeAlert(title: "Error!", message: "Password/Email is not empty ")
-
+            
         }
         
     }

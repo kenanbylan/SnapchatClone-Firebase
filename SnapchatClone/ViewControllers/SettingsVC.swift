@@ -9,25 +9,29 @@ import UIKit
 import Firebase
 
 class SettingsVC: UIViewController {
-
     
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        
+        getUserInfo()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    func getUserInfo() {
+        
+        usernameLabel.text = UserSignleton.sharedUserInfo.username
+        emailLabel.text = UserSignleton.sharedUserInfo.email
+        
     }
-    */
+    
+    
     
     
     @IBAction func logOutClicked(_ sender: Any) {
@@ -40,5 +44,5 @@ class SettingsVC: UIViewController {
         }
     }
     
-
+    
 }

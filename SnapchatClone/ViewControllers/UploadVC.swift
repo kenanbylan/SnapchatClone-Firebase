@@ -6,7 +6,7 @@ import UIKit
 import Firebase
 
 class UploadVC: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-
+    
     @IBOutlet var uploadImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -107,7 +107,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate & UINavigation
                                         }
                                     }
                                 }
-                       
+                                
                             }
                             
                         }
@@ -116,7 +116,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate & UINavigation
             }
         }
         
-       
+        
     }
     
     func makeAlert(title:String, message : String){
