@@ -21,6 +21,7 @@
 		6E80B695294F2D15006E84A7 /* UserSignleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E80B694294F2D15006E84A7 /* UserSignleton.swift */; };
 		6E80B697294F6110006E84A7 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E80B696294F6110006E84A7 /* FeedCell.swift */; };
 		6E80B699294F8FB4006E84A7 /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E80B698294F8FB4006E84A7 /* Snap.swift */; };
+		6E9B7D5629539D13003DFF20 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6E9B7D5529539D13003DFF20 /* .gitignore */; };
 		EC74ED9E6C9158FAEFE202A9 /* Pods_SnapchatClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4470637A88D793ED5214FB86 /* Pods_SnapchatClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		6E80B694294F2D15006E84A7 /* UserSignleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignleton.swift; sourceTree = "<group>"; };
 		6E80B696294F6110006E84A7 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		6E80B698294F8FB4006E84A7 /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
+		6E9B7D5529539D13003DFF20 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F603E86A9940A47BA022FB31 /* Pods-SnapchatClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapchatClone.release.xcconfig"; path = "Target Support Files/Pods-SnapchatClone/Pods-SnapchatClone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 				6E80B68F294F167B006E84A7 /* ViewControllers */,
 				6E80B679294F014B006E84A7 /* Main.storyboard */,
 				6E80B687294F0262006E84A7 /* GoogleService-Info.plist */,
+				6E9B7D5529539D13003DFF20 /* .gitignore */,
 				6E80B67C294F014C006E84A7 /* Assets.xcassets */,
 				6E80B67E294F014C006E84A7 /* LaunchScreen.storyboard */,
 				6E80B681294F014C006E84A7 /* Info.plist */,
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E9B7D5629539D13003DFF20 /* .gitignore in Resources */,
 				6E80B680294F014C006E84A7 /* LaunchScreen.storyboard in Resources */,
 				6E80B688294F0262006E84A7 /* GoogleService-Info.plist in Resources */,
 				6E80B67D294F014C006E84A7 /* Assets.xcassets in Resources */,
